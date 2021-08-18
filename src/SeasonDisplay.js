@@ -1,34 +1,34 @@
-import React, {Component} from "react";
+import React from 'react';
 
-export default class SeasonDisplay extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {lat: '', lon: ''};
-    }
-
-    options = {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 0
-    };
-
-    getPosition() {
-        navigator.geolocation.getCurrentPosition(
-            (pos) => {
-                this.state.lat = pos.coords.latitude;
-                this.state.lon = pos.coords.longitude;
-            },
-            (err) => {
-                console.warn(`ERROR(${err.code}): ${err.message}`);
-            }, this.options);
-    }
-
-    render = () => {
-        return (
-            <div>
-                This is it: {this.getPosition()}
-            </div>
-        );
+const seasonConfig = {
+    'summer': {
+        text: "It's summer",
+        icon: 'iconanimate icon massive sun',
+    },
+    'winter': {
+        text: "It's winter",
+        icon: 'iconanimate icon massive snowflake'
     }
 }
+const getSeason = (lat, month) => {
+    if (month > 2 && month < 9) {
+        return lat > 0 ? 'summer' : 'winter';
+    } else {
+        return lat < 0 ? 'summer' : 'winter';
+    }
+}
+
+const SeasonDisplay = ({lat}) => {
+
+    const season = getSeason(lat, new Date().getMonth());
+    const {text, icon} = seasonConfig[season];
+
+    return (
+        <div className={`season-display ${season}`}>
+            <i className={icon}/>
+            <h1>{text}</h1>
+        </div>
+    );
+};
+
+export default SeasonDisplay;

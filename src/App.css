@@ -1,41 +1,40 @@
 @import url(https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css);
-
-#root{
+#root {
   width: 100%;
   height: 100vh;
-  .app-container{
-    height: 100vh;
-  }
+}
+#root .app-container {
+  height: 100vh;
 }
 
-.season-display{
+.season-display {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  &.summer{
-    background-color: beige;
-    .icon{
-      color: yellow;
-    }
-  }
-  &.winter{
-    background-color: aliceblue;
-    .icon{
-      color: white;
-    }
-  }
-  .iconanimate{
-    animation: rotate-center 8s linear infinite both;
-  }
+}
+.season-display.summer {
+  background-color: beige;
+}
+.season-display.summer .icon {
+  color: yellow;
+}
+.season-display.winter {
+  background-color: aliceblue;
+}
+.season-display.winter .icon {
+  color: white;
+}
+.season-display .iconanimate {
+  animation: rotate-center 8s linear infinite both;
 }
 
-.loader{
+.loader {
   height: 100%;
-  .ui{
-    height: 100%;
-  }
+}
+.loader .ui {
+  height: 100%;
 }
 
 @-webkit-keyframes rotate-center {
@@ -58,3 +57,5 @@
     transform: rotate(360deg);
   }
 }
+
+/*# sourceMappingURL=App.css.map */
